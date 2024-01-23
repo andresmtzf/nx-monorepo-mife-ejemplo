@@ -1,0 +1,30 @@
+{
+  "name": "remote-e2e",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "sourceRoot": "apps/remote-e2e/src",
+  "targets": {
+    "e2e": {
+      "executor": "@nx/cypress:cypress",
+      "options": {
+        "cypressConfig": "apps/remote-e2e/cypress.config.ts",
+        "testingType": "e2e",
+        "devServerTarget": "remote:serve"
+      },
+      "configurations": {
+        "production": {
+          "devServerTarget": "remote:serve:production"
+        },
+        "ci": {
+          "devServerTarget": "remote:serve-static"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"]
+    }
+  },
+  "implicitDependencies": ["remote"],
+  "tags": []
+}
