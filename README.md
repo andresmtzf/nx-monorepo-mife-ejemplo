@@ -55,3 +55,31 @@ Nx comes with local caching already built-in (check your `nx.json`). On CI you m
 - [Join the community](https://nx.dev/community)
 - [Subscribe to the Nx Youtube Channel](https://www.youtube.com/@nxdevtools)
 - [Follow us on Twitter](https://twitter.com/nxdevtools)
+
+Para iniciar un proyecto monorepo par microfrontend/module federattion
+
+1. Crear workspace
+
+```
+# Replace acme with desired scope
+npx create-nx-workspace acme --preset=apps
+cd acme
+```
+
+2. Agregar el plugin de react
+
+`npm add -D @nx/react`
+
+3. Generar host y aplicaciones
+
+`nx g @nx/react:host host --remotes=shop,cart,about`
+
+> Para generar un host y 3 remotos (shop, cart, about)
+
+Se puede omitir la opción `--remotes` y posteriormente con `nx g @nx/react:remote [nombreRemoto] --host=[nombreHost]`
+
+> Es posible agregar la opción --directory para establecer una carpeta donde se guarden las apps, para mantener orden.
+
+4. Añadir libreria
+
+`nx g @nx/react:library [nombreLibreria] --directory=libs/store`
