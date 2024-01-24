@@ -1,11 +1,8 @@
-/*
- * * * * * * * * * * * * * * * * * * * * * * * * * * * *
- This is a starter component and can be deleted.
- * * * * * * * * * * * * * * * * * * * * * * * * * * * *
- Delete this file and get started with your project!
- * * * * * * * * * * * * * * * * * * * * * * * * * * * *
- */
+import { useStore } from '@amf/store';
+
 export function NxWelcome({ title }: { title: string }) {
+  const { usuario } = useStore();
+
   return (
     <>
       <style
@@ -428,7 +425,7 @@ export function NxWelcome({ title }: { title: string }) {
           <div id="welcome">
             <h1>
               <span> Hello there, </span>
-              Welcome {title} 👋
+              Welcome {title} 👋 - {usuario}
             </h1>
           </div>
 
